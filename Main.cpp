@@ -59,16 +59,35 @@ int main() {
 	int length;
 	int numberOfNumbers;
 	int numberOfSpecialChars;
-	// prompt user for password length
-	cout << "Enter the desired password length: ";
-	cin >> length;
-	// prompt user for number of digits
+	// define min and max length
+	int minLength = 6;
+	int maxLength = 24;	
+	// loop until valid length is provided
+	for (int i = 0; i < 1; i++) {
+		// prompt user for password length
+		cout << "Enter the desired password length: ";
+		cin >> length;
+		// check if length is valid
+		if (length < minLength || length > maxLength) {
+			// print error message
+			if (length < minLength) {
+				cout << "Error: Password length must be at least " << minLength << " characters." << endl;
+				i--;
+			}
+			else {
+				cout << "Error: Password length must not exceed " << maxLength << " characters." << endl;
+				i--;
+			}
+		}
+	}
+
+	// prompt user for number of digits  
 	cout << "Enter the number of digits: ";
 	cin >> numberOfNumbers;
 	// prompt user for number of special characters
 	cout << "Enter the number of special characters: ";
 	cin >> numberOfSpecialChars;
-
+	
 	cout << "Password: " << generatePassword(length, numberOfNumbers, numberOfSpecialChars) << endl; // print the generated password
 
 	return 0;
