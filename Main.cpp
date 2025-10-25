@@ -61,7 +61,7 @@ int main() {
 	int numberOfSpecialChars;
 	// define min and max length
 	int minLength = 6;
-	int maxLength = 24;	
+	int maxLength = 24;
 	// loop until valid length is provided
 	for (int i = 0; i < 1; i++) {
 		// prompt user for password length
@@ -81,13 +81,28 @@ int main() {
 		}
 	}
 
-	// prompt user for number of digits  
-	cout << "Enter the number of digits: ";
-	cin >> numberOfNumbers;
-	// prompt user for number of special characters
-	cout << "Enter the number of special characters: ";
-	cin >> numberOfSpecialChars;
+	for (int i = 0; i < 1; i++) {
+		// prompt user for number of digits  
+		cout << "Enter the number of digits: ";
+		cin >> numberOfNumbers;
+		// prompt user for number of special characters
+		cout << "Enter the number of special characters: ";
+		cin >> numberOfSpecialChars;
+
+		// check if the legnth will have at least one letter
+		if (numberOfNumbers + numberOfSpecialChars == length) {
+			cout << "Password can not be just numbers and special characters." << endl;
+			cout << "Please include at least one letter." << endl;
+			i--;
+		}
+		else if (numberOfNumbers + numberOfSpecialChars > length) {
+			cout << "Error: The sum of digits and special characters exceeds the total password length." << endl;
+			cout << "Please enter valid amount of numbers and special characters." << endl;
+			i--;
+		}
+	}
 	
+	// give the generated password to user
 	cout << "Password: " << generatePassword(length, numberOfNumbers, numberOfSpecialChars) << endl; // print the generated password
 
 	return 0;
