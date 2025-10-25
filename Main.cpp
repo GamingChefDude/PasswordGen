@@ -32,8 +32,7 @@ int main() {
 	cout << "Enter the desired password length: ";
 	std::cin >> length;
 
-	string password = generatePassword(length);
-	cout << password << endl;
+	cout << generatePassword(length) << endl; // print the generated password
 
 	return 0;
 }
