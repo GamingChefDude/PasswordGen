@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <random>
+#include <algorithm>
 
 using std::string;
 using std::cout;
@@ -47,6 +48,7 @@ string generatePassword(int length, int amountNumbers, int amountSpecialChars) {
 	}
 
 	password += numbers + specialCharacters; // append numbers and special characters to password
+	std::shuffle(password.begin(), password.end(), engine); // shuffle the password to randomize character positions
 	return password;
 }
 
