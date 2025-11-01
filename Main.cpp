@@ -73,7 +73,15 @@ int main() {
 	for (int i = 0; i < 1; i++) {
 		// prompt user for password length
 		cout << "Enter the desired password length: ";
-		cin >> length;
+		if (!(cin >> length)) {
+			// invalid input, clear error and ignore rest of line
+			cout << errorColor << "Error: Invalid input. Please enter a number." << defaultColor << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			i--;
+			continue;
+		}
+
 		// check if length is valid
 		if (length < minLength || length > maxLength) {
 			// print error message
@@ -91,10 +99,25 @@ int main() {
 	for (int i = 0; i < 1; i++) {
 		// prompt user for number of digits  
 		cout << "Enter the number of digits: ";
-		cin >> numberOfNumbers;
+		if (!(cin >> numberOfNumbers)) {
+			// invalid input, clear error and ignore rest of line
+			cout << errorColor << "Error: Invalid input. Please enter a number." << defaultColor << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			i--;
+			continue;
+		}
+
 		// prompt user for number of special characters
 		cout << "Enter the number of special characters: ";
-		cin >> numberOfSpecialChars;
+		if (!(cin >> numberOfSpecialChars)) {
+			// invalid input, clear error and ignore rest of line
+			cout << errorColor << "Error: Invalid input. Please enter a number." << defaultColor << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			i--;
+			continue;
+		}
 
 		// check if the legnth will have at least one letter
 		if (numberOfNumbers + numberOfSpecialChars == length) {
