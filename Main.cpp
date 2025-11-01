@@ -53,9 +53,14 @@ string generatePassword(int length, int amountNumbers, int amountSpecialChars) {
 }
 
 int main() {
+	// setup console colors
+	const string defaultColor = "\033[0m"; // default console color
+	const string titleColor = "\033[1;32m"; // green color for title
+	const string errorColor = "\033[1;31m"; // red color for errors
+
 	// top title
-	cout << "--- Password Generator ---" << endl;
-	cout << "--------------------------" << endl;
+	cout << titleColor << "--- Password Generator ---" << defaultColor << endl;
+	cout << titleColor << "--------------------------" << defaultColor << endl;
 
 	// get requirements from user 
 	int length;
@@ -73,11 +78,11 @@ int main() {
 		if (length < minLength || length > maxLength) {
 			// print error message
 			if (length < minLength) {
-				cout << "Error: Password length must be at least " << minLength << " characters." << endl;
+				cout << errorColor << "Error: Password length must be at least " << minLength << " characters." << defaultColor << endl;
 				i--;
 			}
 			else {
-				cout << "Error: Password length must not exceed " << maxLength << " characters." << endl;
+				cout << errorColor << "Error: Password length must not exceed " << maxLength << " characters." << defaultColor << endl;
 				i--;
 			}
 		}
@@ -93,13 +98,13 @@ int main() {
 
 		// check if the legnth will have at least one letter
 		if (numberOfNumbers + numberOfSpecialChars == length) {
-			cout << "Password can not be just numbers and special characters." << endl;
-			cout << "Please include at least one letter." << endl;
+			cout << errorColor << "Password can not be just numbers and special characters." << endl;
+			cout << "Please include at least one letter." << defaultColor << endl;
 			i--;
 		}
 		else if (numberOfNumbers + numberOfSpecialChars > length) {
-			cout << "Error: The sum of digits and special characters exceeds the total password length." << endl;
-			cout << "Please enter valid amount of numbers and special characters." << endl;
+			cout << errorColor << "Error: The sum of digits and special characters exceeds the total password length." << endl;
+			cout << "Please enter valid amount of numbers and special characters." << defaultColor << endl;
 			i--;
 		}
 	}
